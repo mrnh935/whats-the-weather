@@ -1,20 +1,27 @@
 function displayWeather(response) {
   let temperatureInput = document.querySelector("#city-temp");
-  let temperature = Math.round(response.data.temperature.current);
+  let temperature = response.data.temperature.current;
   let cityElement = document.querySelector("#city-name");
-
-  temperatureInput.innerHTML = `${temperature}`;
-  cityElement.innerHTML = response.data.city;
-
+  let conditionsInput = document.querySelector("#city-conditions");
   let detailInput = document.querySelector("#current-details");
+  let timeInput = document.querySelector("#city-date");
+  date = new Date(response.data.time * 1000);
+
+  let iconElement = document.querySelector("#icon");
+
   let pressure = Math.round(response.data.temperature.pressure);
   let humidity = Math.round(response.data.temperature.humidity);
   let wind = Math.round(response.data.wind.speed);
 
+  temperatureInput.innerHTML = `${Math.round(temperature)}`;
+  cityElement.innerHTML = response.data.city;
+  timeInput.innerHTML = formatDate(date);
+  conditionsInput.innerHTML = response.data.condition.description;
   detailInput.innerHTML = `Pressure: <strong>${pressure}</strong> Humidity: <strong>${humidity}%</strong> Wind: <strong>${wind} mps</strong>`;
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon"/>`;
 }
 
-function newCity(city) {
+function searchCity(city) {
   let apiKey = "3af237t6810483eo486b71736a808a31";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
@@ -25,16 +32,12 @@ function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
 
-  newCity(searchInput.value);
+  searchCity(searchInput.value);
 }
-
-let searchCity = document.querySelector("#search-form");
-searchCity.addEventListener("submit", handleSearchSubmit);
 
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
-  let day = date.getDay();
 
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -54,7 +57,7 @@ function formatDate(date) {
     "Saturday",
   ];
 
-  let currentDay = days[day];
+  let day = days[date.getDay()];
 
   let currentDate = date.getDate();
 
@@ -73,14 +76,12 @@ function formatDate(date) {
     "December",
   ];
 
-  let currentMonth = months[date.getMonth()];
+  let month = months[date.getMonth()];
 
-  return `${currentDay} ${currentDate} ${currentMonth} ${hours}:${minutes}`;
+  return `${day} ${currentDate} ${month} ${hours}:${minutes}`;
 }
 
-let currentDateElement = document.querySelector("#city-date");
-let showDate = new Date();
+let searchFormInput = document.querySelector("#search-form");
+searchFormInput.addEventListener("submit", handleSearchSubmit);
 
-currentDateElement.innerHTML = formatDate(showDate);
-
-newCity("Amsterdam");
+searchCity("Amsterdam");
