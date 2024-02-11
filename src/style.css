@@ -17,7 +17,7 @@ html {
 }
 
 a {
-  color: rgb(192, 184, 184);
+  color: rgb(101, 102, 104);
 }
 
 .poppins-regular {
@@ -27,7 +27,7 @@ a {
 }
 
 .weather-app {
-  background: #858080;
+  background: #d4cfcf;
   opacity: 85%;
   max-width: 600px;
   margin: 45px auto;
@@ -64,7 +64,7 @@ header {
 
 .weather-app-data {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between 10px;
   padding: 15px 15px;
 }
 
@@ -83,7 +83,7 @@ header {
 }
 
 .current-details strong {
-  color: white;
+  color: rgb(99, 140, 183);
 }
 
 .conditions {
@@ -96,13 +96,15 @@ header {
 }
 
 .current-temperature-container {
-  display: flex inline;
+  display: flex;
+  max-height: 50%;
+  max-width: 70%;
 }
 
-.current-temperature-icon {
+.weather-app-icon {
   width: 88px;
   height: 88px;
-  align-self: center;
+  padding: 15px 0 0 5px;
 }
 
 .current-temperature {
