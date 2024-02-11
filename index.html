@@ -10,17 +10,18 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
-    <title>What's the weather?</title>
+    <title>What's the weather today?</title>
   </head>
   <body>
     <div class="weather-app">
       <header>
-        <form class="search-form">
+        <form class="search-form" id="search-form">
           <input
             type="search"
             placeholder="Enter a city"
             required
             class="search-form-input"
+            id="search-input"
           />
           <input type="submit" value="Search" class="search-form-button" />
         </form>
@@ -28,17 +29,20 @@
       <main>
         <div class="weather-app-data">
           <div>
-            <h1 class="current-city">Amsterdam</h1>
+            <h1 class="current-city" id="city-name">Amsterdam</h1>
             <p class="current-details">
-              Sunday 4 February 16:16; scattered clouds <br />
+              <span id="city-date">Sunday 4 February 16:16;</span>
+              scattered clouds<br />
               <br />
-              Pressure: <strong>1024</strong> Humidity:
-              <strong>96%</strong> Wind: <strong>13 mph</strong>
+              <span id="current-details">
+                Pressure: <strong>1024</strong> Humidity:
+                <strong>96%</strong> Wind: <strong>13 mph</strong>
+              </span>
             </p>
           </div>
           <div class="current-temperature-container">
             <div class="current-temperature-icon">🌞</div>
-            <div class="current-temperature">3</div>
+            <div class="current-temperature" id="city-temp">3</div>
             <div class="current-temperature-unit">°C</div>
           </div>
         </div>
@@ -57,5 +61,6 @@
         >.
       </footer>
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
