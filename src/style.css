@@ -96,12 +96,13 @@ header {
 }
 
 .current-temperature-container {
-  display: flex;
+  display: flex inline;
 }
 
 .current-temperature-icon {
   width: 88px;
   height: 88px;
+  align-self: center;
 }
 
 .current-temperature {
