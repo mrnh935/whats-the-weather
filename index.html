@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <title>What's the weather today?</title>
   </head>
   <body>
@@ -29,20 +30,20 @@
       <main>
         <div class="weather-app-data">
           <div>
-            <h1 class="current-city" id="city-name">Amsterdam</h1>
+            <h1 class="current-city" id="city-name"></h1>
             <p class="current-details">
-              <span id="city-date">Sunday 4 February 16:16;</span>
-              scattered clouds<br />
+              <span id="city-date"></span>
+              <span id="city-time"></span>; scattered clouds<br />
               <br />
               <span id="current-details">
-                Pressure: <strong>1024</strong> Humidity:
-                <strong>96%</strong> Wind: <strong>13 mph</strong>
+                Pressure: <strong></strong> Humidity: <strong></strong> Wind:
+                <strong></strong>
               </span>
             </p>
           </div>
           <div class="current-temperature-container">
             <div class="current-temperature-icon">🌞</div>
-            <div class="current-temperature" id="city-temp">3</div>
+            <div class="current-temperature"><span id="city-temp"></span></div>
             <div class="current-temperature-unit">°C</div>
           </div>
         </div>
